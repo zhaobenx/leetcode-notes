@@ -1,6 +1,6 @@
 # Leetcode notes
 
-## 7. [Reverse Integer]( https://leetcode.com/problems/reverse-integer/)
+## 7. [Reverse Integer]( https://leetcode.com/problems/reverse-integer/) <a name="7"></a>
 
 > Given a 32-bit signed integer, reverse digits of an integer.
 
@@ -25,7 +25,7 @@ class Solution:
 
 ### Idea
 
-1. Same as [7](#7. [Reverse Integer]( https://leetcode.com/problems/reverse-integer/))
+1. Same as [7](#7)
 
 ## 11. [Container With Most Water](https://leetcode.com/problems/container-with-most-water/)
 
@@ -37,6 +37,23 @@ class Solution:
 
 1. BF(time exceeded) :x:
 2. Two Pointer Approach
+
+## 14. :star:[Longest Common Prefix](https://leetcode.com/problems/longest-common-prefix/)
+
+### 脑子要活
+
+> Write a function to find the longest common prefix string amongst an array of strings
+
+### Idea
+
+1. Vertical scanning
+2. Sort the string list first, then compare the first string and the last string.
+3. Use python zip, to vertically split strings and use set to compare.
+4. First get the shortest string, then compare to other strings.
+
+### Snippet
+
+`startwith`, `zip`, `set`
 
 ## 17. [Letter Combinations of a Phone Number](https://leetcode.com/problems/letter-combinations-of-a-phone-number/)
 
