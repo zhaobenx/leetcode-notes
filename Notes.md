@@ -8,6 +8,10 @@
 
 $C_n = \frac{1}{n+1}{2n \choose n} = \frac{(2n)!}{(n+1)!n!}$ $C_n$表示有*2n+1*个节点组成不同构满[二叉树](https://zh.wikipedia.org/wiki/二叉树)（full binary tree）的方案数
 
+### 35. `itertools.groupby()`
+
+
+
 ---
 
 ## 7. [Reverse Integer]( https://leetcode.com/problems/reverse-integer/) <a name="7"></a>
@@ -144,6 +148,14 @@ List-wise `and` and `or` .
 
 :exclamation: For python `sets = sets.union(...)` to update a `set`.
 
+## 24. [Swap Nodes in Pairs](https://leetcode.com/problems/swap-nodes-in-pairs/)
+
+> Given a linked list, swap every two adjacent nodes and return its head.
+
+### Idea
+
+1. Basic pointer operation. Should draw a flow chart before type a code.
+
 ## 26. [Remove Duplicates from Sorted Array](https://leetcode.com/problems/remove-duplicates-from-sorted-array/)
 ### 循环注意开始和结束以及状态量的初始值
 
@@ -190,6 +202,29 @@ class Solution:
 1. For loop in haystack, and compare with needle. :exclamation: For loop range is from 0 to `len(H) - len(N) + 1`.
 2. Python built-in `str.find()` ​.​ ​X​D:stuck_out_tongue_closed_eyes:
 
+## 35. [Search Insert Position](https://leetcode.com/problems/search-insert-position/)
+
+### 二分查找
+
+> Given a sorted array and a target value, return the index if the target is found. If not, return the index where it would be if it were inserted in order.
+
+### Idea
+
+1. Simple traversal.
+2. Binary search.
+
+### Snippet
+
+`mid = start + (end - start)//2`, `end = mid`, `start = mid + 1`
+
+## 38. [Count and Say](https://leetcode.com/problems/count-and-say/)
+
+### Idea
+
+1. Recursively read last string.  But this is too slow
+2. Python built-in `itertools.groupby()`, return a list of `[(element, iter), …]` is a good choice.
+3. Prepare the results in advance.
+
 ## 169. [Majority Element](https://leetcode.com/problems/majority-element/)
 
 ### BM算法
@@ -220,7 +255,9 @@ class Solution:
         return m
 ```
 
-## 336. [Palindrome Pairs](https://leetcode.com/problems/palindrome-pairs/)
+## 336. :star:[Palindrome Pairs](https://leetcode.com/problems/palindrome-pairs/)
+
+### 巧妙的循环
 
 > Given a list of **unique** words, find all pairs of **distinct** indices `(i, j)` in the given list, so that the concatenation of the two words, i.e. `words[i] + words[j]` is a palindrome.
 
@@ -228,6 +265,50 @@ class Solution:
 
 1. BF :x:(time exceeded)
 2. Add the last letter to a dict, then iteration based on those dict. ( still too slow)
+3. :star:First add reversed word into a dictionary. Then for each word, split it in to prefix and suffix (:exclamation: for loop with range `n + 1` , only in this way prefix and suffix can cover all the word) .  Then check if the prefix in the reversed dictionary and if the suffix is self palindromic. And vice versa.  (:exclamation: Avoid check the whole words twice.)
+
+```
+          IN?
+    +-----------------+
+    |                 |
+    |                 v
++---+---+-------+  +--+--+
+|prefix |suffix |  |table|
++-------+---+---+  +-----+
+            |
+            v
+    +-------+-------+
+    |IS palindromic?|
+    +---------------+
+```
+
+### Code
+
+```python
+class Solution:
+    def palindromePairs(self, words: List[str]) -> List[List[int]]:
+        # assume all letters is in lower case
+        table = {word[::-1]:i for i, word in enumerate(words)}
+        
+        def is_p(word):
+            return True if word == word[::-1] else False
+        
+        res = []
+        for index, word in enumerate(words):
+            for j in range(len(word) + 1):
+                pre = word[:j]
+                suf = word[j:]
+                if  pre in table and is_p(suf):
+                    if table[pre] != index:
+                        res.append([index, table[pre]])
+                if j > 0 and suf in table and is_p(pre):
+                    if table[suf] != index:
+                        res.append([table[suf], index])                
+    
+        return res
+```
+
+
 
 ## 509. [Fibonacci Number](https://leetcode.com/problems/fibonacci-number/)
 
