@@ -10,7 +10,9 @@ $C_n = \frac{1}{n+1}{2n \choose n} = \frac{(2n)!}{(n+1)!n!}$ $C_n$表示有*2n+1
 
 ### 35. `itertools.groupby()`
 
+## ## TODO:
 
+- [ ] 216
 
 ---
 
@@ -225,6 +227,15 @@ class Solution:
 2. Python built-in `itertools.groupby()`, return a list of `[(element, iter), …]` is a good choice.
 3. Prepare the results in advance.
 
+## 46. [Permutations](https://leetcode.com/problems/permutations/)
+
+> Given a collection of **distinct** integers, return all possible permutations.
+
+### Idea
+
+1. Recursion
+2. Python built-in `itertools.permutations()`
+
 ## 169. [Majority Element](https://leetcode.com/problems/majority-element/)
 
 ### BM算法
@@ -254,6 +265,15 @@ class Solution:
                 t = 0
         return m
 ```
+
+## 216. [Combination Sum III](https://leetcode.com/problems/combination-sum-iii/)
+
+> Find all possible combinations of ***k*** numbers that add up to a number ***n***, given that only numbers from 1 to 9 can be used and each combination should be a unique set of numbers.
+
+### Idea
+
+1. BF(Too slow)
+2. 
 
 ## 336. :star:[Palindrome Pairs](https://leetcode.com/problems/palindrome-pairs/)
 
