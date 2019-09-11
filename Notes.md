@@ -10,11 +10,26 @@ $C_n = \frac{1}{n+1}{2n \choose n} = \frac{(2n)!}{(n+1)!n!}$ $C_n$表示有*2n+1
 
 ### 35. `itertools.groupby()`
 
+### 53. 动态规划
+
 ## ## TODO:
 
 - [ ] 216
 
 ---
+
+## 3. [Longest Substring Without Repeating Characters](https://leetcode.com/problems/longest-substring-without-repeating-characters/)
+
+### 动态规划，合理利用字典
+
+> Given a string, find the length of the **longest substring** without repeating characters.
+
+### Idea
+
+1. Brute force(Too slow)
+2. Dynamic programing. Set a list `start`, to store the local longest substring, so if one substring is from i to j, `start[j] = i`. Loop over the string, detect if the new letter in the last substring, if so, create a new substring for this letter, else add the letter to the substring.
+3. Count each letter’s index, find the max interval. And find the minimum of all the interval.:x:(cannot give answer like “aab”)
+4. Another approach is to store each letters’ last position into a `dict`, and during the loop, just compare local length to the last letter position.
 
 ## 7. [Reverse Integer]( https://leetcode.com/problems/reverse-integer/) <a name="7"></a>
 
@@ -236,6 +251,51 @@ class Solution:
 1. Recursion
 2. Python built-in `itertools.permutations()`
 
+## 47. [Permutations II](https://leetcode.com/problems/permutations-ii/)
+
+> Given a collection of numbers that might contain duplicates, return all possible unique permutations.
+
+### Idea
+
+1. Same as 46
+2. Another solution is to insert, code shown below(:exclamation:this code ignore duplation handling).
+
+### Code
+
+```python
+def permute(nums):
+    permutations = [[]]    
+    for head in nums:
+        permutations = [rest[:i]+[head]+rest[i:] for rest in permutations for i in range(len(rest)+1)]        
+    return permutations
+```
+
+
+
+## 53.:star: [Maximum Subarray](https://leetcode.com/problems/maximum-subarray/)
+
+### 动态规划
+
+> Given an integer array `nums`, find the contiguous subarray (containing at least one number) which has the largest sum and return its sum.
+
+### Idea
+
+1. Divide and conquer. If use code in CLRS for the MAXIMUM-SUBARRAY, the time complexity will be `O(nlog n)`, which is not as excepted. 
+2. Just simple DP. This is a simple problems, as you don’t need to record the maximum subarray, you just need to remember the largest result. :star:(Kadane's Algorithm)
+
+### Code
+
+```python
+class Solution:
+    def maxSubArray(self, nums: List[int]) -> int:
+        memo = [nums[0]] * len(nums)
+        for i in range(1, len(nums)):
+            memo[i] = max(memo[i - 1] + nums[i], nums[i])
+        return max(memo)
+```
+
+
+
 ## 169. [Majority Element](https://leetcode.com/problems/majority-element/)
 
 ### BM算法
@@ -273,7 +333,7 @@ class Solution:
 ### Idea
 
 1. BF(Too slow)
-2. 
+2. Optimize the recursion by checking some conditions.
 
 ## 336. :star:[Palindrome Pairs](https://leetcode.com/problems/palindrome-pairs/)
 
