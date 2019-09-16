@@ -14,6 +14,8 @@ $C_n = \frac{1}{n+1}{2n \choose n} = \frac{(2n)!}{(n+1)!n!}$ $C_n$表示有*2n+1
 
 ## ## TODO:
 
+- [ ] 5
+- [ ] 146 lru cache
 - [ ] 216
 
 ---
@@ -270,7 +272,15 @@ def permute(nums):
     return permutations
 ```
 
+## 50. [Pow(x, n)](https://leetcode.com/problems/powx-n/)
 
+> Implement [pow(*x*, *n*)](http://www.cplusplus.com/reference/valarray/pow/), which calculates *x* raised to the power *n* (x^n^).
+
+### Idea
+
+1. Python built-in `math.pow()`
+2. Normal iteration :x:(too slow)
+3. Binary search e.g. pow(x,25)->pow(x,12)*pow(x,13) (with DP).
 
 ## 53.:star: [Maximum Subarray](https://leetcode.com/problems/maximum-subarray/)
 
@@ -294,7 +304,19 @@ class Solution:
         return max(memo)
 ```
 
+## 58. Length of Last Word
 
+Easy, python built-in `strip()`,`split()`,`len()`. 
+
+## 69. [Sqrt(x)](https://leetcode.com/problems/sqrtx/)
+
+### 二分、牛顿
+
+### Idea
+
+1. `math.sqrt()`
+2. Binary search
+3. Newton‘s method
 
 ## 169. [Majority Element](https://leetcode.com/problems/majority-element/)
 
