@@ -15,6 +15,7 @@ $C_n = \frac{1}{n+1}{2n \choose n} = \frac{(2n)!}{(n+1)!n!}$ $C_n$表示有*2n+1
 ## ## TODO:
 
 - [ ] 5
+- [ ] 16
 - [ ] 146 lru cache
 - [ ] 216
 
@@ -71,7 +72,14 @@ class Solution:
 1. BF(time exceeded) :x:
 2. Two Pointer Approach
 
+## 12. [Integer to Roman](https://leetcode.com/problems/integer-to-roman/)
 
+> Roman numerals are represented by seven different symbols: `I`, `V`, `X`, `L`, `C`, `D` and `M`.
+
+### Idea
+
+1. Store the value from I to M, then for loop to add the value to result.
+2. Calculate all possible value e.g CM,M,MM,MMM… Then this problem can be solved in O(N).:heavy_check_mark:
 
 ## 13. [Roman to Integer](https://leetcode.com/problems/roman-to-integer/)
 
@@ -97,6 +105,21 @@ class Solution:
 ### Snippet
 
 `startwith`, `zip`, `set`
+
+## 15. [3Sum](https://leetcode.com/problems/3sum/)
+
+### 代码严谨
+
+> Given an array `nums` of *n* integers, are there elements *a*, *b*, *c* in `nums` such that *a* + *b* + *c* = 0? Find all unique triplets in the array which gives the sum of zero.
+
+### Idea
+
+1. Same as 2Sum, first calculate two pairs sum and store them in a dict. This method takes O(N^2^), which exceeds the time limits. :x:
+2. Also O(N^2^). First sort the array, and the first loop from start, the second use two pointer approach from end and beginning.  Need to carefully handle the condition in different loops.
+
+## 16. 3Sum Closest
+
+Same as 15
 
 ## 17. [Letter Combinations of a Phone Number](https://leetcode.com/problems/letter-combinations-of-a-phone-number/)
 
