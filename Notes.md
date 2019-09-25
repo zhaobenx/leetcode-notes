@@ -8,6 +8,8 @@
 
 $C_n = \frac{1}{n+1}{2n \choose n} = \frac{(2n)!}{(n+1)!n!}$ $C_n$表示有*2n+1*个节点组成不同构满[二叉树](https://zh.wikipedia.org/wiki/二叉树)（full binary tree）的方案数
 
+### 23. PriorityQueue 用来排序，put(),get()
+
 ### 35. `itertools.groupby()`
 
 ### 53. 动态规划
@@ -16,6 +18,7 @@ $C_n = \frac{1}{n+1}{2n \choose n} = \frac{(2n)!}{(n+1)!n!}$ $C_n$表示有*2n+1
 
 - [ ] 5
 - [ ] 16
+- [ ] 18 4 sum
 - [ ] 146 lru cache
 - [ ] 216
 
@@ -33,6 +36,14 @@ $C_n = \frac{1}{n+1}{2n \choose n} = \frac{(2n)!}{(n+1)!n!}$ $C_n$表示有*2n+1
 2. Dynamic programing. Set a list `start`, to store the local longest substring, so if one substring is from i to j, `start[j] = i`. Loop over the string, detect if the new letter in the last substring, if so, create a new substring for this letter, else add the letter to the substring.
 3. Count each letter’s index, find the max interval. And find the minimum of all the interval.:x:(cannot give answer like “aab”)
 4. Another approach is to store each letters’ last position into a `dict`, and during the loop, just compare local length to the last letter position.
+
+## 6. [ZigZag Conversion](https://leetcode.com/problems/zigzag-conversion/)
+
+> The string `"PAYPALISHIRING"` is written in a zigzag pattern on a given number of rows like this: (you may want to display this pattern in a fixed font for better legibility)
+
+### Idea
+
+1. Find a formula to generate the sequence, and combine it to a str. 
 
 ## 7. [Reverse Integer]( https://leetcode.com/problems/reverse-integer/) <a name="7"></a>
 
@@ -143,7 +154,14 @@ def h(now, lists):
     return res
 ```
 
+## 19. [Remove Nth Node From End of List](https://leetcode.com/problems/remove-nth-node-from-end-of-list/)
 
+> Given a linked list, remove the *n*-th node from the end of list and return its head.
+
+### Idea
+
+1. Simple iteration, need to take care of how to delete the first value. But this is two pass.
+2. No really one pass. Just uses two pointers, one follows the other behind n nodes. 
 
 ## 20. [Valid Parentheses](https://leetcode.com/problems/valid-parentheses/)
 
@@ -171,7 +189,22 @@ def h(now, lists):
 
 ### Snippet
 
-List-wise `and` and `or` .
+List-wise `and` and `or` . 
+
+```python
+while l1 and l2:
+    if l1.val < l2.val:
+        ptr.next = l1
+        l1 = l1.next                
+    else:
+        ptr.next = l2
+        l2 = l2.next                
+        ptr = ptr.next
+
+ptr.next = l1 or l2
+```
+
+
 
 ## 22. :star:[Generate Parentheses](https://leetcode.com/problems/generate-parentheses/)
 
@@ -189,6 +222,19 @@ List-wise `and` and `or` .
 ### Note
 
 :exclamation: For python `sets = sets.union(...)` to update a `set`.
+
+## 23.:star: [Merge k Sorted Lists](https://leetcode.com/problems/merge-k-sorted-lists/)
+
+### 优先队列
+
+> Merge *k* sorted linked lists and return it as one sorted list. Analyze and describe its complexity.
+
+### Idea
+
+1. Simply merge. (time exceed:x:)
+2. Divide and conquer. Separate the lists to two parts, and if one separated contains only two, merge this two like [#21](21).
+3. :sweat: Convert node to list, then sort, then convert back.
+4. Python built-in `PriorityQueue` :star:
 
 ## 24. [Swap Nodes in Pairs](https://leetcode.com/problems/swap-nodes-in-pairs/)
 
@@ -294,6 +340,27 @@ def permute(nums):
         permutations = [rest[:i]+[head]+rest[i:] for rest in permutations for i in range(len(rest)+1)]        
     return permutations
 ```
+
+## 48. [Rotate Image](https://leetcode.com/problems/rotate-image/)
+
+> You are given an *n* x *n* 2D matrix representing an image.
+>
+> Rotate the image by 90 degrees (clockwise).
+
+### Idea
+
+1. Simple for loop, for each element in i,j exchange four element that with rotational symmetry. (Note to handle if matrix length is odd).
+2. Amazing python code `matrix[::] = reversed(zip(*matrix))`
+
+## 49. [Group Anagrams](https://leetcode.com/problems/group-anagrams/)
+
+> Given an array of strings, group anagrams together.
+
+### Idea
+
+1. Use sorted words as the key, word as the value. 
+2. Use a 26-length tuple as the key.
+3. Assign different primes to letter, then the sum of each word as the key.
 
 ## 50. [Pow(x, n)](https://leetcode.com/problems/powx-n/)
 
