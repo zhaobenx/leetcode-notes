@@ -12,6 +12,8 @@ $C_n = \frac{1}{n+1}{2n \choose n} = \frac{(2n)!}{(n+1)!n!}$ $C_n$表示有*2n+1
 
 ### 35. `itertools.groupby()`
 
+### 39. 递归时尽量减少层数，尽早筛除无用分支
+
 ### 53. 动态规划
 
 ## ## TODO:
@@ -313,6 +315,41 @@ class Solution:
 2. Python built-in `itertools.groupby()`, return a list of `[(element, iter), …]` is a good choice.
 3. Prepare the results in advance.
 
+## 39. [Combination Sum](https://leetcode.com/problems/combination-sum/)
+
+### 减少递归层数
+
+> Given a **set** of candidate numbers (`candidates`) **(without duplicates)** and a target number (`target`), find all unique combinations in `candidates` where the candidate numbers sums to `target`.
+
+### Idea 
+
+1. Simple recursive. No matter with or without DP, the speed are slow. **One way** is instead of using set() to avoid duplicate, just add a `index` parameter, so the result is always in ascending order.
+2. :exclamation: Try to avoid even just one more function call e.g.
+
+```python 
+# bad
+def dfs(i):
+    if i > xxx:
+        return
+    for j in range(i)
+    	dfs(j-1)
+# good  
+def dfs(i):
+    for j in range(i):
+        if j > xxx:
+            break
+        dfs(j-1)   
+    
+```
+
+## 40. [Combination Sum II](https://leetcode.com/problems/combination-sum-ii/)
+
+> Given a collection of candidate numbers (`candidates`) and a target number (`target`), find all unique combinations in `candidates` where the candidate numbers sums to `target`.
+
+### Idea
+
+1. Same as 39, just modify the loop index to avoid duplication. Also need to check if elements are the same.
+
 ## 46. [Permutations](https://leetcode.com/problems/permutations/)
 
 > Given a collection of **distinct** integers, return all possible permutations.
@@ -446,6 +483,14 @@ class Solution:
 
 1. BF(Too slow)
 2. Optimize the recursion by checking some conditions.
+
+## 263. Ugly Number](https://leetcode.com/problems/ugly-number)
+
+> Write a program to check whether a given number is an ugly number.
+>
+> Ugly numbers are **positive numbers** whose prime factors only include `2, 3, 5`.
+
+Simple.  30**32%num
 
 ## 336. :star:[Palindrome Pairs](https://leetcode.com/problems/palindrome-pairs/)
 
