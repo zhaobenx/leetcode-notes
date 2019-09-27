@@ -21,6 +21,7 @@ $C_n = \frac{1}{n+1}{2n \choose n} = \frac{(2n)!}{(n+1)!n!}$ $C_n$表示有*2n+1
 - [ ] 5
 - [ ] 16
 - [ ] 18 4 sum
+- [ ] 33 
 - [ ] 146 lru cache
 - [ ] 216
 
@@ -554,7 +555,22 @@ class Solution:
 1. Iteration
 2. Recursion
 
+## 31. [Next Permutation](https://leetcode.com/problems/next-permutation/)
 
+### 记住
+
+> Implement **next permutation**, which rearranges numbers into the lexicographically next greater permutation of numbers.
+
+1. First find the last ascending element *i*. Then sort the list behind *i*. Then find the minimal element that greater than *i*, and swap this with *i*. (Cannot explain why, don’t ask me.)
+2. **Official answer**. First find the last ascending element *i*. **Then find the one element that greater than *i*** , and swap this with *i*.  Then reverse the list behind *i*. ![gif](https://leetcode.com/media/original_images/31_Next_Permutation.gif)
+
+
+
+## 33. [Search in Rotated Sorted Array](https://leetcode.com/problems/search-in-rotated-sorted-array/)
+
+> Suppose an array sorted in ascending order is rotated at some pivot unknown to you beforehand.
+
+1. bad idea.
 
 ## Conclusion
 
