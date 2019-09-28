@@ -568,9 +568,31 @@ class Solution:
 
 ## 33. [Search in Rotated Sorted Array](https://leetcode.com/problems/search-in-rotated-sorted-array/)
 
+### 还需再想
+
 > Suppose an array sorted in ascending order is rotated at some pivot unknown to you beforehand.
 
-1. bad idea.
+### Idea 
+
+1. bad idea. First use binary search find the ‘mid’ points, which is the first one less than the first element. Then find the target element in terms of the ‘mid’ point. $O(log{N})$
+2. Use just one while loop, split the problem into four condition: ~~mid is less than first, target on mid right; mid is less than first, target on mid right;~~ **TODO**
+
+## 34. [Find First and Last Position of Element in Sorted Array](https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/)
+
+> Given an array of integers `nums` sorted in ascending order, find the starting and ending position of a given `target` value.
+
+### Idea
+
+1. Too slow, two binary search, find the minimal target and the maximum target.
+2. :bulb: Add a judge after the first binary search. To check if the element exists.
+
+## 36. [Valid Sudoku](https://leetcode.com/problems/valid-sudoku/)
+
+> Determine if a 9x9 Sudoku board is valid.
+
+### Idea
+
+1. Loop over the board, check if there is any duplication in rows, columns, grids.
 
 ## Conclusion
 
