@@ -594,6 +594,51 @@ class Solution:
 
 1. Loop over the board, check if there is any duplication in rows, columns, grids.
 
+## 54. [Spiral Matrix](https://leetcode.com/problems/spiral-matrix/)
+
+> Given a matrix of *m* x *n* elements (*m* rows, *n* columns), return all elements of the matrix in spiral order.
+
+### Idea
+
+1. Loop, find the rules: 1 main loop from 0 to half of the minimum of sizes; 4 sub loop loop from 4 edges.(Note to handle one row/column loop back problems in the center row/column)
+
+## 55. :star:[Jump Game](https://leetcode.com/problems/jump-game/)
+
+> Given an array of non-negative integers, you are initially positioned at the first index of the array.
+
+### Idea
+
+1. DFS (failed, time exceeds and stack overflow e.g. 100000,999999,9999998,….,1,0,0). But if using stack instead of using recursion, the speed can be a little bit faster(only beat 5%).
+2. Greedy. Track from back to front. To trace the last position one point can reach.:star:
+
+### Code
+
+```python
+class Solution:
+    def canJump(self, nums: List[int]) -> bool:
+        last_postion = len(nums) - 1
+        for i in range(len(nums) -1, -1, -1):
+            if nums[i] + i >= last_postion:
+                last_postion = i
+
+        return last_postion == 0 
+```
+
+
+
+## 66. [Plus One](https://leetcode.com/problems/plus-one/)
+
+> Given a **non-empty** array of digits representing a non-negative integer, plus one to the integer.
+
+### Idea
+
+1. Python built-in map, str, list comprehension. 
+2. For loop.
+
+
+
+----
+
 ## Conclusion
 
 1. For python, `if` is faster than `max`, `min`. Although it is not pythonic. 
