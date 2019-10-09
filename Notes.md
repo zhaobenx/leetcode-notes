@@ -16,12 +16,15 @@ $C_n = \frac{1}{n+1}{2n \choose n} = \frac{(2n)!}{(n+1)!n!}$ $C_n$表示有*2n+1
 
 ### 53. 动态规划
 
+### 59. ` zip(*A[::-1])` rotate A clockwise.
+
 ## ## TODO:
 
 - [ ] 5
 - [ ] 16
 - [ ] 18 4 sum
 - [ ] 33 
+- [ ] 60 permutation 
 - [ ] 146 lru cache
 - [ ] 216
 
@@ -634,6 +637,61 @@ class Solution:
 
 1. Python built-in map, str, list comprehension. 
 2. For loop.
+
+## 56. [Merge Intervals](https://leetcode.com/problems/merge-intervals/)
+
+> Given a collection of intervals, merge all overlapping intervals.
+
+### Idea
+
+1. Greedy algorithm, sort the array first, then loop over the array. O(nlogn )
+
+## 59. [Spiral Matrix II](https://leetcode.com/problems/spiral-matrix-ii/)
+
+> Given a positive integer *n*, generate a square matrix filled with elements from 1 to *n*2 in spiral order.
+
+### Idea
+
+1. Like [54](#54), use for loop to generate index.
+2. Amazing idea from leetcode.
+
+    ```python
+    def generateMatrix(self, n):
+        A, lo = [], n*n+1
+        while lo > 1:
+            lo, hi = lo - len(A), lo
+            A = [range(lo, hi)] + zip(*A[::-1])
+        return A
+    ```
+
+## 89. [Gray Code](https://leetcode.com/problems/gray-code/)
+
+> The gray code is a binary numeral system where two successive values differ in only one bit.
+
+### Idea
+
+1. :star:	Amazing gray(n) = n^(n>>1)
+
+## 61. [Rotate List](https://leetcode.com/problems/rotate-list/)
+
+> Given a linked list, rotate the list to the right by *k* places, where *k* is non-negative.
+
+### Idea 
+
+1. Simple loop. First count the length, then calculate the position where to concatenate. 
+
+## 62. [Unique Paths](https://leetcode.com/problems/unique-paths/)
+
+> A robot is located at the top-left corner of a *m* x *n* grid (marked 'Start' in the diagram below).
+
+## Idea
+
+1. Use combination???? Still thinkin why. I see. There are totally m + n - 2 steps, which include m - 1 step to go right or n - 1 to go down. So the total paths is ${n + m -2 \choose m - 1}$ or $n + m - 2 \choose n - 1$. :heavy_check_mark:
+2. Find a rules, that it is a sum of sum of sum of …. of the range to length, which the number of sum is the width -1.
+
+
+
+
 
 
 
