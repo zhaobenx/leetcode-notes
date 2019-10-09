@@ -684,18 +684,13 @@ class Solution:
 
 > A robot is located at the top-left corner of a *m* x *n* grid (marked 'Start' in the diagram below).
 
-## Idea
+### Idea
 
 1. Use combination???? Still thinkin why. I see. There are totally m + n - 2 steps, which include m - 1 step to go right or n - 1 to go down. So the total paths is ${n + m -2 \choose m - 1}$ or $n + m - 2 \choose n - 1$. :heavy_check_mark:
 2. Find a rules, that it is a sum of sum of sum of …. of the range to length, which the number of sum is the width -1.
 
 
-
-
-
-
-
-----
+---
 
 ## Conclusion
 
