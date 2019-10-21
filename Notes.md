@@ -689,6 +689,27 @@ class Solution:
 1. Use combination???? Still thinkin why. I see. There are totally m + n - 2 steps, which include m - 1 step to go right or n - 1 to go down. So the total paths is ${n + m -2 \choose m - 1}$ or $n + m - 2 \choose n - 1$. :heavy_check_mark:
 2. Find a rules, that it is a sum of sum of sum of …. of the range to length, which the number of sum is the width -1.
 
+## 71. [Simplify Path]( https://leetcode.com/problems/simplify-path/ ) 
+
+>  Given an **absolute path** for a file (Unix-style), simplify it. Or in other words, convert it to the **canonical path**. 
+
+### Idea
+
+1. Simple stack.
+
+##  73. [Set Matrix Zeroes ]( https://leetcode.com/problems/set-matrix-zeroes/ )
+
+>  Given a *m* x *n* matrix, if an element is 0, set its entire row and column to 0. Do it [**in-place**](https://en.wikipedia.org/wiki/In-place_algorithm). 
+
+### Idea
+
+1. Space complexity is $O(m + n)$. Loop over matrix, record all the rows and columns that contains  0, then set them to zero.
+2. Space complexity is constant, but time complexity will be $O(nm\times(m+n))$. Just loop over, and set every rows and columns to None. And then replace None with 0.
+3. :heavy_check_mark: Space constant, time complexity is $O(mn)$. Set the first row and column as the mark of each row or column as zero or not.
+
+
+
+
 
 ---
 
