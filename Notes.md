@@ -707,6 +707,47 @@ class Solution:
 2. Space complexity is constant, but time complexity will be $O(nm\times(m+n))$. Just loop over, and set every rows and columns to None. And then replace None with 0.
 3. :heavy_check_mark: Space constant, time complexity is $O(mn)$. Set the first row and column as the mark of each row or column as zero or not.
 
+##  75. [Sort Colors ]( https://leetcode.com/problems/sort-colors/ )
+
+>  Given an array with *n* objects colored red, white or blue, sort them **[in-place](https://en.wikipedia.org/wiki/In-place_algorithm)** so that objects of the same color are adjacent, with the colors in the order red, white and blue. 
+
+### Idea
+
+1. Two pass with counting sort.
+2. :heavy_check_mark: One pass with three pointer. Like what is done in quicksort’s partition. Two identity red and white’s right border, one identity blue’s left border. (Note, the termination condition is white > blue) .
+
+##  [77. Combinations](https://leetcode.com/problems/combinations/)
+
+>  Given two integers *n* and *k*, return all possible combinations of *k* numbers out of 1 ... *n*. 
+
+### Idea
+
+1. Use recursion.
+
+2. A non-recursive method. Maintain two lists, one for result, one for middle variables; Use  loop from 1 to n,   the try to append this loop variables to the end of each middle lists, if the length reached to k, save the list to result.
+
+   Note to optimize useless branches. 
+
+### Code
+
+```python
+class Solution:
+    def combine(self, n: int, k: int) -> List[List[int]]:
+        res = []
+        mid = []
+        for i in range(1, n + 2):
+            tmp = []
+            for p in mid:
+                if len(p) == k:
+                    res.append(p)
+                elif len(p) >= k - n + i - 1:
+                    tmp.append(p + [i])
+                    tmp.append(p)
+            tmp.append([i])
+            mid = tmp
+        return res
+```
+
 
 
 
