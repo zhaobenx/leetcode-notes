@@ -21,7 +21,7 @@ def reorder(input_file, output_file):
 
                 res = []
                 for i in re.findall(
-                    r"##\s+\d+\.[\s\S]*?(?=\n## \d+\.|$)", target.group(2)
+                    r"##\s+\d+\.[\s\S]*?(?=\n##\s+\d+\.|$)", target.group(2)
                 ):
                     order = re.match(r"##\s+(\d+)\.", i).group(1)
                     res.append((int(order), i))
@@ -32,7 +32,7 @@ def reorder(input_file, output_file):
 
                 w.write("---")
                 w.write(target.group(3))
-                print("Done")
+                print(f"Done, {len(res)} problems has been processed.")
         else:
             print("input file format error")
     os.system("pause")
