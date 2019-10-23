@@ -18,6 +18,8 @@ $C_n = \frac{1}{n+1}{2n \choose n} = \frac{(2n)!}{(n+1)!n!}$ $C_n$表示有*2n+1
 
 ### 59. ` zip(*A[::-1])` rotate A clockwise.
 
+### 74. `bisect` for binary search.
+
 ## ## TODO:
 
 - [ ] 5
@@ -25,6 +27,7 @@ $C_n = \frac{1}{n+1}{2n \choose n} = \frac{(2n)!}{(n+1)!n!}$ $C_n$表示有*2n+1
 - [ ] 18 4 sum
 - [ ] 33 
 - [ ] 60 permutation 
+- [ ] 73 2d binary search
 - [ ] 146 lru cache
 - [ ] 216
 
@@ -716,7 +719,7 @@ class Solution:
 1. Two pass with counting sort.
 2. :heavy_check_mark: One pass with three pointer. Like what is done in quicksort’s partition. Two identity red and white’s right border, one identity blue’s left border. (Note, the termination condition is white > blue) .
 
-##  [77. Combinations](https://leetcode.com/problems/combinations/)
+##  77. [Combinations](https://leetcode.com/problems/combinations/)
 
 >  Given two integers *n* and *k*, return all possible combinations of *k* numbers out of 1 ... *n*. 
 
@@ -749,6 +752,20 @@ class Solution:
 ```
 
 
+
+##  74. [Search a 2D Matrix ]( https://leetcode.com/problems/search-a-2d-matrix/)
+
+### 读题！
+
+> Write an efficient algorithm that searches for a value in an *m* x *n* matrix. This matrix has the following properties:
+>
+> - Integers in each row are sorted from left to right.
+> - The first integer of each row is greater than the last integer of the previous row.
+
+### Idea 
+
+1. Treat the matrix as a sorted array, do binary search on it. 
+2. :heavy_check_mark:Python built-in `bisect` is much faster than hand-written code.
 
 
 
