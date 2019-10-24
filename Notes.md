@@ -767,7 +767,39 @@ class Solution:
 1. Treat the matrix as a sorted array, do binary search on it. 
 2. :heavy_check_mark:Python built-in `bisect` is much faster than hand-written code.
 
+##  78. [Subsets]( https://leetcode.com/problems/subsets/ ) 
 
+>  Given a set of **distinct** integers, *nums*, return all possible subsets (the power set). 
+
+### Idea
+
+1. There are $2^n$ subsets, so to convert one number(from 0 to $2^n -1$) to binary array. Using the binary to select each elements.
+2. Append one element to result each time. 
+
+### Code 
+
+```python 
+class Solution:
+    def subsets(self, nums: List[int]) -> List[List[int]]:
+        res = [[]]
+        for i in nums:
+            res += [j+[i] for j in res]
+        return res
+```
+
+Much faster:
+
+```python
+class Solution:
+    def subsets(self, nums: List[int]) -> List[List[int]]:
+        res = [[]]
+        for n in nums:
+            for i in range(len(res)):
+                res.append(res[i] + [n])
+        return res
+```
+
+Comparison: Append is the fastest, then is expand, then is +=.
 
 ---
 
