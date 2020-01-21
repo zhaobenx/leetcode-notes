@@ -8,6 +8,8 @@
 
 $C_n = \frac{1}{n+1}{2n \choose n} = \frac{(2n)!}{(n+1)!n!}$ $C_n$表示有*2n+1*个节点组成不同构满[二叉树](https://zh.wikipedia.org/wiki/二叉树)（full binary tree）的方案数
 
+Also true for 96
+
 ### 23. PriorityQueue 用来排序，put(),get()
 
 ### 35. `itertools.groupby()`
@@ -556,6 +558,18 @@ Easy, python built-in `strip()`,`split()`,`len()`.
 1. Use combination???? Still thinkin why. I see. There are totally m + n - 2 steps, which include m - 1 step to go right or n - 1 to go down. So the total paths is ${n + m -2 \choose m - 1}$ or $n + m - 2 \choose n - 1$. :heavy_check_mark:
 2. Find a rules, that it is a sum of sum of sum of …. of the range to length, which the number of sum is the width -1.
 
+## 64. [Minimum Path Sum](https://leetcode.com/problems/minimum-path-sum/)
+
+### 用循环
+
+> Given a *m* x *n* grid filled with non-negative numbers, find a path from top left to bottom right which *minimizes* the sum of all numbers along its path.
+
+### Idea
+
+1. Simple dp, loop search for all solutions. :x: Too slow.
+2. Loop in reverse order, calculate the minimum cost. Still too slow.
+3. Use Loop in DP is much faster than recursive. :heavy_check_mark:
+
 ## 66. [Plus One](https://leetcode.com/problems/plus-one/)
 
 > Given a **non-empty** array of digits representing a non-negative integer, plus one to the integer.
@@ -574,6 +588,16 @@ Easy, python built-in `strip()`,`split()`,`len()`.
 1. `math.sqrt()`
 2. Binary search
 3. Newton‘s method
+
+## 70. [Climbing Stairs](https://leetcode.com/problems/climbing-stairs/)
+
+> You are climbing a stair case. It takes *n* steps to reach to the top.
+>
+> Each time you can either climb 1 or 2 steps. In how many distinct ways can you climb to the top?
+
+### Idea
+
+1. Fibonacci sequence.
 
 ## 71. [Simplify Path]( https://leetcode.com/problems/simplify-path/ ) 
 
@@ -684,6 +708,8 @@ class Solution:
 
 Comparison: Append is the fastest, then is expand, then is +=.
 
+
+
 ## 89. [Gray Code](https://leetcode.com/problems/gray-code/)
 
 > The gray code is a binary numeral system where two successive values differ in only one bit.
@@ -691,6 +717,81 @@ Comparison: Append is the fastest, then is expand, then is +=.
 ### Idea
 
 1. :star:	Amazing gray(n) = n^(n>>1)
+
+## 94. [Binary Tree Inorder Traversal](https://leetcode.com/problems/binary-tree-inorder-traversal/)
+
+> Given a binary tree, return the *inorder* traversal of its nodes' values.
+
+### Idea
+
+1. Recursion.
+2. Iteration. Key point is to transform recursion to iteration. :star:
+
+## 96. [Unique Binary Search Trees](https://leetcode.com/problems/unique-binary-search-trees/)
+
+> Given *n*, how many structurally unique **BST's** (binary search trees) that store values 1 ... *n*?
+
+### Idea
+
+1. Note that one BST can only have one sequence of 1…n, thus we can just count  the possible shape of BST. That is to count all the possible left and right children combinations.  Use lru to make this a DP.
+2. Catalan number
+
+## 101. [Symmetric Tree](https://leetcode.com/problems/symmetric-tree/)
+
+> Given a binary tree, check whether it is a mirror of itself (ie, symmetric around its center).
+
+### Idea
+
+1. Two pointer, do a DFS search.
+
+## 102. [Binary Tree Level Order Traversal](https://leetcode.com/problems/binary-tree-level-order-traversal/)
+
+> Given a binary tree, return the *level order* traversal of its nodes' values. (ie, from left to right, level by level).
+
+### Idea
+
+1. BFS, with two counter. Counter counts next level node numbers, one indicates now level numbers.
+
+## 104. [Maximum Depth of Binary Tree](https://leetcode.com/problems/maximum-depth-of-binary-tree/)
+
+> Given a binary tree, find its maximum depth.
+
+### Idea 
+
+1. DFS with level on each walk.
+
+
+
+## 139. [Word Break](https://leetcode.com/problems/word-break/)
+
+> Given a **non-empty** string *s* and a dictionary *wordDict* containing a list of **non-empty** words,
+
+### Idea
+
+1. DP, like longest subarray.
+
+
+
+## 141. [Linked List Cycle](https://leetcode.com/problems/linked-list-cycle/)
+
+> Given a linked list, determine if it has a cycle in it.
+
+### Idea
+
+1. Obtain a set to store all the visited node. Time is O(n), space is O(n).
+2. Two pointer, one is slow, one is fast(normal). If fast one catch the slower one, there is a cycle. Time O(n), Space O(1).
+
+## 142. [Linked List Cycle II](https://leetcode.com/problems/linked-list-cycle-ii/)
+
+> Given a linked list, return the node where the cycle begins. If there is no cycle, return `null`.
+
+### Idea 
+
+1. Same as [141](141. [Linked List Cycle](https://leetcode.com/problems/linked-list-cycle/))
+
+
+
+
 
 ## 169. [Majority Element](https://leetcode.com/problems/majority-element/)
 
@@ -721,6 +822,16 @@ class Solution:
                 t = 0
         return m
 ```
+
+## 200. [Number of Islands](https://leetcode.com/problems/number-of-islands/)
+
+> Given a 2d grid map of `'1'`s (land) and `'0'`s (water), count the number of islands. An island is surrounded by water and is formed by connecting adjacent lands horizontally or vertically. You may assume all four edges of the grid are all surrounded by water.
+
+### Idea 
+
+1. Iterate over each grid, and  flip all the adjacent 1 to 0. Count the number of first flip. 
+
+
 
 ## 216. [Combination Sum III](https://leetcode.com/problems/combination-sum-iii/)
 
