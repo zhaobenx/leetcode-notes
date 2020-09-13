@@ -22,6 +22,8 @@ Also true for 96
 
 ### 74. `bisect` for binary search.
 
+### 875.  -(-a//b) means ceil(a/b)
+
 ## ## TODO:
 
 - [ ] 5
@@ -32,6 +34,7 @@ Also true for 96
 - [ ] 73 2d binary search
 - [ ] 146 lru cache
 - [ ] 216
+- [ ] 329 with dp
 
 ---
 
@@ -718,6 +721,14 @@ Comparison: Append is the fastest, then is expand, then is +=.
 
 1. :star:	Amazing gray(n) = n^(n>>1)
 
+## 92. [Reverse Linked List II](https://leetcode.com/problems/reverse-linked-list-ii/)
+
+> Reverse a linked list from position *m* to *n*. Do it in one-pass.
+
+### Idea
+
+1. Carefully reverse. Draw a plot before coding.
+
 ## 94. [Binary Tree Inorder Traversal](https://leetcode.com/problems/binary-tree-inorder-traversal/)
 
 > Given a binary tree, return the *inorder* traversal of its nodes' values.
@@ -789,10 +800,6 @@ Comparison: Append is the fastest, then is expand, then is +=.
 
 1. Same as [141](141. [Linked List Cycle](https://leetcode.com/problems/linked-list-cycle/))
 
-
-
-
-
 ## 169. [Majority Element](https://leetcode.com/problems/majority-element/)
 
 ### BM算法
@@ -833,6 +840,19 @@ class Solution:
 
 
 
+## 207. [Course Schedule](https://leetcode.com/problems/course-schedule/)
+
+> Given the total number of courses and a list of prerequisite **pairs**, is it possible for you to finish all courses?
+
+### Idea
+
+1. DFS, to detect if there is cycle
+
+#### Note
+
+**Carefully use defaultdict** as there my be unexcepted result. e.g. `if some in default_dict[not_existed_key]`
+
+
 ## 216. [Combination Sum III](https://leetcode.com/problems/combination-sum-iii/)
 
 > Find all possible combinations of ***k*** numbers that add up to a number ***n***, given that only numbers from 1 to 9 can be used and each combination should be a unique set of numbers.
@@ -849,6 +869,15 @@ class Solution:
 > Ugly numbers are **positive numbers** whose prime factors only include `2, 3, 5`.
 
 Simple.  30**32%num
+
+## 329. [Longest Increasing Path in a Matrix](https://leetcode.com/problems/longest-increasing-path-in-a-matrix/description/)
+
+> Given an integer matrix, find the length of the longest increasing path.
+
+### Idea
+
+1. Simple traverse over the whole matrix, and find the maximum. :x: Too slow.
+2. DP
 
 ## 336. :star:[Palindrome Pairs](https://leetcode.com/problems/palindrome-pairs/)
 
@@ -911,6 +940,16 @@ class Solution:
 
 1. Iteration
 2. Recursion
+
+## 875. [Koko Eating Bananas](https://leetcode.com/problems/koko-eating-bananas/)
+
+> Return the minimum integer `K` such that she can eat all the bananas within `H` hours.
+
+### Idea
+
+1. Binary search, search for the minimum K within 1 to max(piles).
+
+
 
 ---
 

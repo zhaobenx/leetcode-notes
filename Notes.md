@@ -950,6 +950,7 @@ Comparison: Append is the fastest, then is expand, then is +=.
 
 **Carefully use defaultdict** as there my be unexcepted result. e.g. `if some in default_dict[not_existed_key]`
 
+
 ---
 
 ## Conclusion
