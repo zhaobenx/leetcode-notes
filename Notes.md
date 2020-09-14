@@ -956,3 +956,6 @@ Comparison: Append is the fastest, then is expand, then is +=.
 ## Conclusion
 
 1. For python, `if` is faster than `max`, `min`. Although it is not pythonic. 
+
+
+
