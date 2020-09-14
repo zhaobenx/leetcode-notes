@@ -22,6 +22,8 @@ Also true for 96
 
 ### 74. `bisect` for binary search.
 
+### 230. Binary tree different traverse method.
+
 ### 875.  -(-a//b) means ceil(a/b)
 
 ## ## TODO:
@@ -621,6 +623,7 @@ class Solution:
 
 1. DFS (failed, time exceeds and stack overflow e.g. 100000,999999,9999998,….,1,0,0). But if using stack instead of using recursion, the speed can be a little bit faster(only beat 5%).
 2. Greedy. Track from back to front. To trace the last position one point can reach.:star:
+3. Greedy, but starts from front, same as last method.
 
 ### Code
 
@@ -946,9 +949,25 @@ Comparison: Append is the fastest, then is expand, then is +=.
 
 1. DFS, to detect if there is cycle
 
-#### Note
+### Note
 
 **Carefully use defaultdict** as there my be unexcepted result. e.g. `if some in default_dict[not_existed_key]`
+
+## 230. :star:[Kth Smallest Element in a BST](https://leetcode.com/problems/kth-smallest-element-in-a-bst/)
+
+> Given a binary search tree, write a function `kthSmallest` to find the **k**th smallest element in it.
+
+### Idea
+
+1. Inorder in BST generate the ordered value of the tree.
+
+## 105. [Construct Binary Tree from Preorder and Inorder Traversal](https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/)
+
+> Given preorder and inorder traversal of a tree, construct the binary tree.
+
+### Idea
+
+1. For preorder, the first element is its root, for inorder, elements before the root is left tree, after the root  is right tree. Do the thing recursively.
 
 
 ---
